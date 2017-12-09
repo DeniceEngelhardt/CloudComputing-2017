@@ -20,7 +20,7 @@ http.createServer(function (request, response) {
    
     var username = null;
     var password = null;
-
+p
     if (authorization)
     {
         var tmp = authorization.split(' ');     // Split on a space, the original auth looks like  "Basic Y2hhcmxlczoxMjM0NQ==" and we need the 2nd part
@@ -58,7 +58,7 @@ http.createServer(function (request, response) {
                     responseMessage += '\nYour provided password is: '+password;
 			
 		if (process.pid) 	
-		responseMessage += '\nThis process is your pid: '+process.id;
+		responseMessage += '\nThis process is your pid: '+process.pid;
                 
                 responseMessage += '\n\nRequest Id: '+requestId;
                 response.end(responseMessage)
