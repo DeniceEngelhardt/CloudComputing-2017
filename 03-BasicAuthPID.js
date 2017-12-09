@@ -2,7 +2,7 @@ var http = require('http');
 var url = require('url');
 var crypto = require("crypto");
 var port = process.env.PORT || 8081;
-var process = require('process');
+
 
 http.createServer(function (request, response) {
    // Send the HTTP header 
@@ -20,7 +20,8 @@ http.createServer(function (request, response) {
    
     var username = null;
     var password = null;
-p
+    var process = require('process');
+
     if (authorization)
     {
         var tmp = authorization.split(' ');     // Split on a space, the original auth looks like  "Basic Y2hhcmxlczoxMjM0NQ==" and we need the 2nd part
@@ -28,15 +29,10 @@ p
         var plain_auth = buf.toString();        // read it back out as a string At this point plain_auth = "username:password"
 
         var creds = plain_auth.split(':');      // split on a ':'
-	
         username = creds[0];
         password = creds[1];
     }
 
-   if (process.pid) 
-   {
-   console.log('This process is your pid ' + process.pid);
-   }
 
    if(request.method=='POST') 
    {
@@ -56,12 +52,13 @@ p
 
                 if (password)
                     responseMessage += '\nYour provided password is: '+password;
-			
+
 		if (process.pid) 	
+
 		responseMessage += '\nThis process is your pid: '+process.pid;
                 
                 responseMessage += '\n\nRequest Id: '+requestId;
-                response.end(responseMessage)
+                response.end(responseMessage);
        
             });       
     }
