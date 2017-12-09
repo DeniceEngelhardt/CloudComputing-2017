@@ -2,6 +2,7 @@ var http = require('http');
 var url = require('url');
 var crypto = require("crypto");
 var port = process.env.PORT || 8081;
+var process = require('process');
 
 http.createServer(function (request, response) {
    // Send the HTTP header 
@@ -27,7 +28,7 @@ http.createServer(function (request, response) {
         var plain_auth = buf.toString();        // read it back out as a string At this point plain_auth = "username:password"
 
         var creds = plain_auth.split(':');      // split on a ':'
-	var process = require('process');
+	
         username = creds[0];
         password = creds[1];
     }
